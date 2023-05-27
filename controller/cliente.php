@@ -14,7 +14,7 @@
         switch ($_GET["op"]) {
 
                 /* TODO:MOSTRAR LISTADO DE CLIENTES SEGUN EST=1 */
-            case "ShowAll":
+            case "showall":
                     $datos=$cliente->show_cliente();
                     echo json_encode($datos);
             break;
@@ -44,11 +44,10 @@
                 $datos = $cliente->update_cliente(
                     $body["cli_id"], 
                     $body["cli_nom"],
-                    $body["cli_pais"],
+                    $body["pais_id"],
                     $body["int_id"],
                     $body["cli_correo"],
-                    $body["cli_cel"],
-                    $body["pais_id"]);
+                    $body["cli_cel"]);
                 echo "Actualización Efectuada";      
             break;
 
@@ -60,6 +59,8 @@
             break;
 
         }
+
+        
 
 
 

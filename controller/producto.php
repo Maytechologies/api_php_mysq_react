@@ -14,7 +14,7 @@
      switch ($_GET["op"]) {
 
         /* TODO:MOSTRAR LISTADO DE PRODUCTOS SEGUN EST=1 */
-        case "ShowAll":
+        case "showall":
               $datos=$producto->show_producto();
               echo json_encode($datos);
         break;
@@ -39,13 +39,21 @@
 
         /* TODO:ACTUALIZA INFORMACION EN CAMPOS EN TB TM_PRODUCTO */
         case "Update_Prod":
-            $datos = $producto->update_producto($body["prod_id"], $body["prod_nom"], $body["prod_descrip"], $body["prod_costo"], $body["prod_precio"], $body["prod_stock"], $body["cat_id"], $body["est"]);
+            $datos = $producto->update_producto(
+                $body["prod_id"], 
+                $body["prod_nom"], 
+                $body["prod_descrip"], 
+                $body["prod_costo"], 
+                $body["prod_precio"], 
+                $body["prod_stock"], 
+                $body["cat_id"], 
+                $body["est"]);
             echo "Actualización Correcta";
              
         break;
 
         /* TODO:CAMBIA EL VALOR DEL CAMPO EST=0, ELIMINADO ESTE REGISTRO DEL LISTADO SHOWALL */
-        case "Delete_Prod":
+        case "del_pro":
             $datos = $producto->update_estado($body["prod_id"]);
             echo "Registro Eliminado";
              
